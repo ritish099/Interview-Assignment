@@ -42,7 +42,6 @@ class MainActivity : AppCompatActivity() {
         button?.setOnClickListener(View.OnClickListener {
             //Checking for Permission to read SMS
             if (ContextCompat.checkSelfPermission(getBaseContext(), "android.permission.READ_SMS") == PackageManager.PERMISSION_GRANTED) {
-                //Requesting Permission
                 if (ph_no?.text.toString().isNotEmpty() && days_no?.text.toString().isNotEmpty()) {
                     //Using Kotlin Coroutines
                     GlobalScope.launch(Dispatchers.Main) {
@@ -53,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Fields cannot be blank", Toast.LENGTH_LONG).show()
                 }
             } else {
+                //Requesting Permission
                 ActivityCompat.requestPermissions(this@MainActivity, arrayOf("android.permission.READ_SMS"), REQUEST_CODE_ASK_PERMISSIONS)
             }
 
